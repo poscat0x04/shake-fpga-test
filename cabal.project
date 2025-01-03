@@ -1,0 +1,19 @@
+packages: .
+
+write-ghc-environment-files: always
+
+source-repository-package
+  type: git
+  location: https://github.com/poscat0x04/shake-fpga
+  tag: 07996e4ee697aefa45c98266abcf696ba23659c4
+
+package shake-fpga-test
+  ghc-options: -Wall
+               -Wincomplete-uni-patterns
+               -Wincomplete-record-updates
+               -Wunused-packages
+  documentation: True
+  haddock-html: True
+  haddock-hoogle: True
+  haddock-internal: True
+  test-show-details: streaming

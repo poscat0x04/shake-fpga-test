@@ -1,0 +1,7 @@
+targets:
+  - module: Adder
+    topEntity: wire
+    part: a
+    xdc: bbb
+    linkComponents:
+     - test:shake-fpga-test-test

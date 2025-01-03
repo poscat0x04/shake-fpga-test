@@ -1,0 +1,11 @@
+cradle:
+  cabal:
+    - path: "./src"
+      component: "lib:shake-fpga-test"
+    - path: "./app/Shake.hs"
+      component: "shake-fpga-test:exe:shake-fpga"
+    - path: "./test"
+      component: "test:shake-fpga-test-test"
+
+
+

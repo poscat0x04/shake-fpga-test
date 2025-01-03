@@ -1,0 +1,93 @@
+cabal-version:   3.14
+name:            shake-fpga-test
+version:         0.1.0
+
+-- synopsis:
+-- description:
+-- category:
+license:         BSD-3-Clause
+license-file:    LICENSE
+author:          poscat
+maintainer:      poscat <poscat@poscat.moe>
+copyright:       Copyright (c) poscat 2025
+stability:       alpha
+homepage:        https://github.com//shake-fpga-test
+bug-reports:     https://github.com//shake-fpga-test/issues
+extra-doc-files:
+  CHANGELOG.md
+  README.md
+
+build-type:      Hooks
+
+custom-setup
+  setup-depends:
+    , base
+    , shake-fpga
+
+common common-attrs
+  build-depends:
+    , base                       >=4.10 && <5
+    , clash-prelude
+    , ghc-typelits-extra
+    , ghc-typelits-knownnat
+    , ghc-typelits-natnormalise
+
+  default-language:   GHC2021
+  default-extensions:
+    NoStarIsType
+    ConstraintKinds
+    DataKinds
+    DefaultSignatures
+    DerivingStrategies
+    DuplicateRecordFields
+    ForeignFunctionInterface
+    FunctionalDependencies
+    GADTs
+    LambdaCase
+    MultiWayIf
+    NamedFieldPuns
+    OverloadedStrings
+    PartialTypeSignatures
+    PatternSynonyms
+    QuantifiedConstraints
+    RecordWildCards
+    RoleAnnotations
+    StandaloneKindSignatures
+    TypeFamilies
+    TypeFamilyDependencies
+    TypeOperators
+    ViewPatterns
+
+  ghc-options:
+    -fplugin GHC.TypeLits.Extra.Solver -fplugin GHC.TypeLits.Normalise
+    -fplugin GHC.TypeLits.KnownNat.Solver
+
+library
+  import:          common-attrs
+  build-depends:
+
+  -- cabal-fmt: expand src
+
+  exposed-modules: Adder
+  other-modules:
+  hs-source-dirs:  src
+
+executable shake-fpga
+  import:        common-attrs
+  build-depends: shake-fpga
+  main-is:       app/Shake.hs
+
+test-suite shake-fpga-test-test
+  import:         common-attrs
+  type:           exitcode-stdio-1.0
+  build-depends:  shake-fpga-test
+  hs-source-dirs: test
+  main-is:        Spec.hs
+  extra-libraries:
+    stdc++
+    atomic
+    z
+
+source-repository head
+  type:     git
+  location: https://github.com//shake-fpga-test
