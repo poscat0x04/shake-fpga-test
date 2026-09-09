@@ -1,5 +1,6 @@
 targets:
   - module: Adder
+    alias: adder
     topEntity: wire
     part: a
     xdc: bbb
